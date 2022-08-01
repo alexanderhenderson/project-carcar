@@ -2,10 +2,12 @@
 
 Team:
 
-* Person 1 - Which microservice?
-* Person 2 - Which microservice?
+* Alexander Henderson - Services Microservice
+* Howard Yuan - Sales microservice
 
 ## Design
+
+See diagram in main directory
 
 ## Service microservice
 
