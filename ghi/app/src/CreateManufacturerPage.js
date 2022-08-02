@@ -20,7 +20,6 @@ class CreateManufacturerPage extends React.Component{
   handleManufacturerChange(event){
     const value = event.target.value;
     this.setState({manufacturer: value});
-    console.log(value);
   }
   
   async handleSubmit(event){
@@ -31,7 +30,7 @@ class CreateManufacturerPage extends React.Component{
     // get state data
     const data = {...this.state};
 
-    console.log("state: ", this.state)
+    //console.log("state: ", this.state)
 
     // data conversion
     data.name = data.manufacturer;
@@ -54,7 +53,7 @@ class CreateManufacturerPage extends React.Component{
     // clearing form/state if successful
     if (jsonResponse.ok){
       const response = await jsonResponse.json();
-      console.log('Response: ', data);
+      //console.log('Response: ', data);
       this.setState({
         manufacturer: '',
       });

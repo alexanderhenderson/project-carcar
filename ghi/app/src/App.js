@@ -6,6 +6,7 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import ManufacturerListPage from './ManufacturerListPage';
 import CreateManufacturerPage from './CreateManufacturerPage'
+import AddCarToInventory from './AddCarToInventoryPage'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/automobiles" element={<ListAutomobiles />} />
           <Route path="/models/new" element={<CreateModel />} />
           <Route path="/models" element={<ListModels />} />
+          <Route path="/addCar" element={<AddCarToInventory />} />
         </Routes>
       </div>
     </BrowserRouter>

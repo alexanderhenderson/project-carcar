@@ -5,8 +5,6 @@ function Nav() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">CarCar</NavLink>
-        <NavLink className="navbar-brand" to="/manufacturers">List of Manufacturers</NavLink>
-        <NavLink className="navbar-brand" to="/createManufacturer">Create Manufacturer</NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -21,6 +19,15 @@ function Nav() {
               </NavLink>
               <NavLink className="nav-link" aria-current="page" to="/models">
                 Models
+              </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/manufacturers">
+                List of Manufacturers
+              </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/createManufacturer">
+                Create Manufacturer
+              </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/addCar">
+                Add Car to Inventory
               </NavLink>
             </li>
 
