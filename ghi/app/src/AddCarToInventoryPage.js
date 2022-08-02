@@ -130,7 +130,7 @@ class AddCarToInventory extends React.Component{
                   </select>
               </div>
               <div className="form-floating mb-3">
-                  <input onChange={this.handleVinChange} value={this.state.vin} type="number" placeholder="vin" name="vin" id="vin" className="form-control"/>
+                  <input onChange={this.handleVinChange} value={this.state.vin} type="text" placeholder="vin" name="vin" id="vin" className="form-control"/>
                   <label htmlFor="vin"> Vin Number </label>
               </div>
               <div className="form-floating mb-3">
