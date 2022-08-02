@@ -27,6 +27,7 @@ class ManufacturerListPage extends React.Component{
 
     render(){
         return (
+        <div className="shadow p-4 mt-4">
         <table className="table table-hover">
           <thead>
             <tr>
@@ -44,6 +45,7 @@ class ManufacturerListPage extends React.Component{
             })}
           </tbody>
         </table>
+        </div>
     )};
 };
 
