@@ -1,8 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import CreateModel from './CreateModel';
+import ListAutomobiles from './ListAutomobiles';
+import ListModels from './ListModels';
 import MainPage from './MainPage';
 import Nav from './Nav';
 import ManufacturerListPage from './ManufacturerListPage';
 import CreateManufacturerPage from './CreateManufacturerPage'
+
 
 function App() {
   return (
@@ -13,6 +17,9 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/manufacturers" element={<ManufacturerListPage />} />
           <Route path="/createManufacturer" element={<CreateManufacturerPage />} />
+          <Route path="/automobiles" element={<ListAutomobiles />} />
+          <Route path="/models/new" element={<CreateModel />} />
+          <Route path="/models" element={<ListModels />} />
         </Routes>
       </div>
     </BrowserRouter>
