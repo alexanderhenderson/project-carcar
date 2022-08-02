@@ -2,11 +2,15 @@ from django.db import models
 from django.urls import reverse
 
 
+
 class Manufacturer(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def get_api_url(self):
         return reverse("api_manufacturer", kwargs={"pk": self.id})
+
+    def __str__(self):
+        return self.name
 
 
 class VehicleModel(models.Model):
@@ -22,6 +26,9 @@ class VehicleModel(models.Model):
     def get_api_url(self):
         return reverse("api_vehicle_model", kwargs={"pk": self.id})
 
+    def __str__(self):
+        return self.name
+
 
 class Automobile(models.Model):
     color = models.CharField(max_length=50)
@@ -36,3 +43,7 @@ class Automobile(models.Model):
 
     def get_api_url(self):
         return reverse("api_automobile", kwargs={"vin": self.vin})
+    
+    def __str__(self):
+        #return self.color + str(self.year) + str(self.model) + " vin code: " + str(self.vin)
+        return f'{self.color} {str(self.year)} {str(self.model)} vin code: {str(self.vin)}'
