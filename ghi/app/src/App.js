@@ -11,6 +11,8 @@ import CreateCustomers from './CreateCustomer';
 import CreateSalesPersons from './CreateSalesPerson';
 import CreateSalesRecord from './CreateSalesRecord';
 import ListSales from './ListSales';
+import CreateTechnicianPage from './CreateTechnicianPage';
+import CreateAppointmentPage from './CreateAppointmentPage';
 
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
           <Route path="/salespersons" element={<CreateSalesPersons />} />
           <Route path="/salesrecord/new" element={<CreateSalesRecord />} />
           <Route path="/sales" element={<ListSales />} />          
+          <Route path="/addTechnician" element={<CreateTechnicianPage />} />
+          <Route path="/createAppointment" element={<CreateAppointmentPage />} />
         </Routes>
       </div>
     </BrowserRouter>

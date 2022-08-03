@@ -1,3 +1,4 @@
+from calendar import c
 from json import JSONEncoder
 from django.urls import NoReverseMatch
 from django.db.models import QuerySet
@@ -19,7 +20,6 @@ class QuerySetEncoder(JSONEncoder):
         else:
             return super().default(o)
 
-
 class ModelEncoder(DateEncoder, QuerySetEncoder, JSONEncoder):
     encoders = {}
 
@@ -31,6 +31,7 @@ class ModelEncoder(DateEncoder, QuerySetEncoder, JSONEncoder):
                     d["href"] = o.get_api_url()
                 except NoReverseMatch:
                     pass
+                    print("Failed HREF addition")
             for property in self.properties:
                 value = getattr(o, property)
                 if property in self.encoders:
