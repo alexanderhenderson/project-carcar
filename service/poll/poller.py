@@ -13,22 +13,25 @@ django.setup()
 # from service_rest.models import Something
 
 # the below import works once the program is running
-from .models import AutomobilesVO
+from service_rest.models import AutomobilesVO
 
 def get_automobiles():
 
-    print("We are in the polling function")
-    # response = requests.get("http://wardrobe-api:8000/api/locations/")
+    # print("We are in the polling function")
+    response = requests.get("http://inventory-api:8000/api/automobiles/")
 
-    # content = json.loads(response.content)
+    content = json.loads(response.content)
     # print("Polled and received content: ", content)
 
-    #for automobile in response["automobiles"]
+    for auto in content["autos"]:
+        AutomobilesVO.objects.update_or_create(
+            vin = auto['vin']
+        )
 
 
 def poll():
     while True:
-        print('Service poller polling for data - is this thing on?')
+        print('Service poller polling for data')
         try:
             # Write your polling logic, here
             get_automobiles()

@@ -31,27 +31,28 @@ class Appointment(models.Model):
 
  # not 100% certin this will work as a foreingkey since we are polling
  # but I am certain it to start with.
-class ManufacturerVO(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+# class ManufacturerVO(models.Model):
+#     name = models.CharField(max_length=100, unique=True)
 
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 
- # this is the class that holds our inventory virtual object
- # the "automobiles" name is slightly confusing but I am
- # looking to keep the naming consistent in this project with
- # the exisiting API
+# the sole purpose of this model is to store a list of
+# vehicles that have been thorugh our inventory, if a 
+# vehicle is on that list, it get's cheaper
+# service prices 
 class AutomobilesVO(models.Model):
-    name = models.CharField(max_length=100)
-    picture_url = models.URLField()
+    vin = models.CharField(max_length=100)
+    # name = models.CharField(max_length=100)
+    # picture_url = models.URLField()
 
-    manufacturer = models.ForeignKey(
-        ManufacturerVO,
-        related_name="models",
-        on_delete=models.CASCADE,
-    )
+    # manufacturer = models.ForeignKey(
+    #     ManufacturerVO,
+    #     related_name="models",
+    #     on_delete=models.CASCADE,
+    # )
 
     def __str__(self):
-        return self.name
+        return str(self.vin)

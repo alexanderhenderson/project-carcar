@@ -50,10 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "inventory-api",
-]
+ALLOWED_HOSTS = ["localhost","inventory-api"]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
