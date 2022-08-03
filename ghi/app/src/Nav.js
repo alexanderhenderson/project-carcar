@@ -29,8 +29,19 @@ function Nav() {
               <NavLink className="nav-link" aria-current="page" to="/addCar">
                 Add Car to Inventory
               </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/customers">
+                Create a potential customer
+              </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/salespersons">
+                Create a Sales Person
+              </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/salesrecord/new">
+                Create a Sales Record
+              </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/sales">
+                List Sales
+              </NavLink>
             </li>
-
           </ul>
         </div>
       </div>

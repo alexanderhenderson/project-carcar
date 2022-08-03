@@ -7,6 +7,10 @@ import Nav from './Nav';
 import ManufacturerListPage from './ManufacturerListPage';
 import CreateManufacturerPage from './CreateManufacturerPage'
 import AddCarToInventory from './AddCarToInventoryPage'
+import CreateCustomers from './CreateCustomer';
+import CreateSalesPersons from './CreateSalesPerson';
+import CreateSalesRecord from './CreateSalesRecord';
+import ListSales from './ListSales';
 
 
 function App() {
@@ -22,6 +26,10 @@ function App() {
           <Route path="/models/new" element={<CreateModel />} />
           <Route path="/models" element={<ListModels />} />
           <Route path="/addCar" element={<AddCarToInventory />} />
+          <Route path="/customers" element={<CreateCustomers />} />
+          <Route path="/salespersons" element={<CreateSalesPersons />} />
+          <Route path="/salesrecord/new" element={<CreateSalesRecord />} />
+          <Route path="/sales" element={<ListSales />} />          
         </Routes>
       </div>
     </BrowserRouter>
