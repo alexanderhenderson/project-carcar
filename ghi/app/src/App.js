@@ -9,6 +9,7 @@ import CreateManufacturerPage from './CreateManufacturerPage'
 import AddCarToInventory from './AddCarToInventoryPage'
 import CreateTechnicianPage from './CreateTechnicianPage';
 import CreateAppointmentPage from './CreateAppointmentPage';
+import ScheduledAppointmentsListPage from './ScheduledAppointmentsListPage';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/addCar" element={<AddCarToInventory />} />
           <Route path="/addTechnician" element={<CreateTechnicianPage />} />
           <Route path="/createAppointment" element={<CreateAppointmentPage />} />
+          <Route path="/scheduledAppointments" element={<ScheduledAppointmentsListPage />} />
         </Routes>
       </div>
     </BrowserRouter>
