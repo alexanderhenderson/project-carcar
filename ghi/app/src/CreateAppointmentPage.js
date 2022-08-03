@@ -7,17 +7,18 @@ class CreateAppointmentPage extends React.Component{
         this.state = {
             vin: "",
 			      ownerName: "",
-			      data: "",
+			      date: "",
 			      time: "",
             reason: "",
-		        technician: [],
+		        technicians: [],
         };
 
-        this.handleFabricChange = this.handleFabricChange.bind(this);
-        this.handleStyleNameChange = this.handleStyleNameChange.bind(this);
-        this.handleColorChange = this.handleColorChange.bind(this);
-        this.handlePictureURLChange = this.handlePictureURLChange.bind(this);
-        this.handleLocationChange = this.handleLocationChange.bind(this);
+        this.handleVinChange = this.handleVinChange.bind(this);
+        this.handleOwnerNameChange = this.handleOwnerNameChange.bind(this);
+        this.handleDateChange = this.handleDateChange.bind(this);
+        this.handleTimeChange = this.handleTimeChange.bind(this);
+        this.handleReasonChange = this.handleReasonChange.bind(this);
+        this.handleTechnicianChange = this.handleTechnicianChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
 
@@ -29,48 +30,51 @@ class CreateAppointmentPage extends React.Component{
     async componentDidMount() {
 
         
-        const url = 'http://localhost:8100/api/locations/';
+        const url = 'http://localhost:8080/api/technicians/';
 
         const response = await fetch(url);
 
         if (response.ok){
-            //console.log("API Response received");
-            const data = await response.json();
-            this.setState({locations: data.locations});
+          const data = await response.json();
+          console.log("API Response received, data: ", data);
+            this.setState({technicians: data.technicians});
         
         } else {
             console.log("API call failed");
         }
     }
 
-    handleFabricChange(event) {
+    handleVinChange(event) {
         const value = event.target.value;
-        this.setState({fabric: value});
-        console.log(value);
+        this.setState({vin: value});
     }
 
-    handleStyleNameChange(event) {
+    handleOwnerNameChange(event) {
         const value = event.target.value;
-        this.setState({styleName: value});
+        this.setState({ownerName: value});
     }
 
-    handleColorChange(event) {
+    handleDateChange(event) {
         const value = event.target.value;
-        this.setState({color: value});
+        this.setState({date: value});
     }
 
-    handlePictureURLChange(event) {
+    handleTimeChange(event) {
         const value = event.target.value;
-        this.setState({pictureURL: value});
+        this.setState({time: value});
     }
     
-    handleLocationChange(event) {
+    handleReasonChange(event) {
         const value = event.target.value;
-        this.setState({location: value});
+        this.setState({reason: value});
     }
 
+    handleTechnicianChange(event) {
+        const value = event.target.value;
+        this.setState({technician: value});
+    }
 
-    // this will submit our completed form and clear it
+    // // this will submit our completed form and clear it
     async handleSubmit(event) {
         //console.log("submit event detected")
         
@@ -98,13 +102,13 @@ class CreateAppointmentPage extends React.Component{
             },
         };
 
-        const response = await fetch(getResponseURL, fetchParameters)
+        // const response = await fetch(getResponseURL, fetchParameters)
 
-        if (response.ok){
-            let newHat = await response.json();
-            newHat = JSON.stringify(newHat);
-            console.log(newHat);
-        }
+        // if (response.ok){
+        //     let newHat = await response.json();
+        //     newHat = JSON.stringify(newHat);
+        //     console.log(newHat);
+        // }
 
     }
 
@@ -112,33 +116,37 @@ class CreateAppointmentPage extends React.Component{
         return(
             <div className="my-5 container">
             <div className="column">
-            <div className="offset-3 col-6">
+            <div className="offset-3 col-5">
                     <div className="shadow p-4 mt-4">
-                    <h1>Create a new hat</h1>
+                    <h1>Create a Service Appointment</h1>
                     <form onSubmit={this.handleSubmit} id="create-location-form">
                     <div className="form-floating mb-3">
-                        <input onChange={this.handleFabricChange} value={this.state.fabric} placeholder="Fabric" required type="text" name ="fabric" id="fabric" className="form-control"/>
-                        <label htmlFor="name">Fabric</label>
+                        <input onChange={this.handleVinChange} value={this.state.vin} placeholder="Vin" min="0" required type="number" name ="vin" id="vin" className="form-control"/>
+                        <label htmlFor="vin">Vin</label>
                     </div>
                   <div className="form-floating mb-3">
-                    <input onChange={this.handleColorChange} value={this.state.color} placeholder="Color" required type="text" name ="color" id="color" className="form-control"/>
-                    <label htmlFor="name">Color</label>
+                    <input onChange={this.handleOwnerNameChange} value={this.state.ownerName} placeholder="Owner Name" required type="text" name ="ownerName" id="ownerName" className="form-control"/>
+                    <label htmlFor="ownerName"> Owner Name </label>
                   </div>
                   <div className="form-floating mb-3">
-                    <input onChange={this.handleStyleNameChange} value={this.state.styleName} placeholder="Style Name" required type="text" name ="styleName" id="styleName" className="form-control"/>
-                    <label htmlFor="name">Style Name</label>
+                    <input onChange={this.handleDateChange} value={this.state.date} placeholder="Date" required type="date" name ="date" id="date" className="form-control"/>
+                    <label htmlFor="date">Date</label>
                   </div>
                   <div className="form-floating mb-3">
-                    <input onChange={this.handlePictureURLChange} value={this.state.pictureURL} placeholder="Picture URL" required type="url" name ="pictureURL" id="pictureURL" className="form-control"/>
-                    <label htmlFor="name">Picture URL</label>
+                    <input onChange={this.handleTimeChange} value={this.state.time} placeholder="Time" required type="time" name ="time" id="time" className="form-control"/>
+                    <label htmlFor="time">Time</label>
+                  </div>
+                  <div className="form-floating mb-3">
+                    <textarea onChange={this.handleReasonChange} value={this.state.reason} placeholder="Reason" required type="text" name ="reason" id="reason" className="form-control"/>
+                    <label htmlFor="reason">Reason</label>
                   </div>
                   <div className="mb-3">
-                    <select onChange={this.handleLocationChange} required name="locations" id='locations' className='form-select'>
-                    <option value="">Choose a location</option>
-                      {this.state.locations.map(location => {
+                    <select onChange={this.handleTechnicianChange} required name="locations" id='locations' className='form-select'>
+                    <option value="">Technician</option>
+                      {this.state.technicians.map(technician => {
                        return (
-                        <option key={location.href} value={location.id}>
-                          {location.closet_name}
+                        <option key={technician.href} value={technician.id}>
+                          {technician.name}
                         </option>
                       );
                      })}

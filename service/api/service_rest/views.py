@@ -18,6 +18,13 @@ class AppointmentListEncoder(ModelEncoder):
     model = Appointment
     properties = ['owner_name', 'vin']
 
+class AppointmentDetailEncoder(ModelEncoder):
+    model = Appointment
+    properties = ['owner_name', 'vin', 'date', 'time', 'reason_for_appointment', "assigned_tech"]
+    encoders = {
+        "assigned_tech": TechnicianDetailEncoder(),
+    }
+
 @require_http_methods(["GET", "POST"])
 def api_list_technicians(request):
 
@@ -26,7 +33,7 @@ def api_list_technicians(request):
 
         technicians = Technician.objects.all()
         return JsonResponse(
-            technicians,
+            {'technicians': technicians},
             encoder = TechnicianListEncoder,
             safe=False
         )
@@ -62,17 +69,49 @@ def api_show_technician(request, pk):
     )
 
 
-@require_http_methods(["GET"])
+@require_http_methods(["GET", "POST"])
 def api_list_appointments(request):
 
-    appointments = Appointment.objects.all()
+    if request == "GET":
+        appointments = Appointment.objects.all()
+        return JsonResponse(
+            appointments,
+            encoder = AppointmentListEncoder,
+            safe=False,
+        )
+    
+    else:
+        appointment = json.loads(request.body)
+        print("Appointment json: ",appointment)
+
+        try:
+            techs = Technician.objects.get(pk=appointment.assigned_tech)
+        except:
+            print("Tech does not exist")
+            return JsonResponse(
+                {'message': 'Tech does not exist'},
+                status=400
+            )
+
+
+@require_http_methods(["GET"])
+def api_show_appointment(request, pk):
+    
+    appointment = Appointment.objects.get(id=pk)
+    # print("appointment date: ", json.dumps(appointments[0].date, default=str))
+    #print(json.dumps(appointment))
+
+    print(" GO FUCK YOURSELF: ", appointment.assigned_tech)
+
+    appointment.date = str(appointment.date)
+    appointment.time = str(appointment.time)
+
+    # # print(json.dumps(appointment, default=str))
+    
+    # # print(json.dumps(appointment))
+    
     return JsonResponse(
-        appointments,
-        encoder = AppointmentListEncoder,
+        appointment,
+        encoder = AppointmentDetailEncoder,
         safe=False,
     )
-
-
-
-def api_show_appointment(reqiest, pk):
-    pass
