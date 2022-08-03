@@ -29,6 +29,9 @@ function Nav() {
               <NavLink className="nav-link" aria-current="page" to="/addCar">
                 Add Car to Inventory
               </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/addTechnician">
+                Add Technician
+              </NavLink>
             </li>
 
           </ul>

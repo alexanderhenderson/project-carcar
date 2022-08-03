@@ -7,6 +7,7 @@ import Nav from './Nav';
 import ManufacturerListPage from './ManufacturerListPage';
 import CreateManufacturerPage from './CreateManufacturerPage'
 import AddCarToInventory from './AddCarToInventoryPage'
+import CreateTechnicianPage from './CreateTechnicianPage';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/models/new" element={<CreateModel />} />
           <Route path="/models" element={<ListModels />} />
           <Route path="/addCar" element={<AddCarToInventory />} />
+          <Route path="/addTechnician" element={<CreateTechnicianPage />} />
         </Routes>
       </div>
     </BrowserRouter>
