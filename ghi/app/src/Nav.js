@@ -38,6 +38,9 @@ function Nav() {
               <NavLink className="nav-link" aria-current="page" to="/scheduledAppointments">
                 Scheduled Appointments
               </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/serviceHistory">
+                Service History
+              </NavLink>
             </li>
           </ul>
         </div>

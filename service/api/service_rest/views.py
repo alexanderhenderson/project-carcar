@@ -149,7 +149,7 @@ def api_show_appointment(request, pk):
             encoder = AppointmentDetailEncoder,
             safe=False,
         )
-    else:
+    elif request.method == "DELETE":
 
         try:
             Appointment.objects.filter(id=pk).delete()
@@ -160,6 +160,20 @@ def api_show_appointment(request, pk):
             return JsonResponse(
             {"Error": "Failed to delete appointment, appointment may not exist"}
             )
+    
+    else:
+        # this put request only handles marking an appointment as complete
+        # (changing complete from False to True)
+        try:
+            Appointment.objects.filter(id=pk).update(completed = True)
+            return JsonResponse(
+            {"Message": f'Successfully marked appointment primary key ${pk} as completed'}
+            )
+        except:
+            return JsonResponse(
+            {"Error": "Failed to update appointment, appointment may not exist"}
+            )
+
 
 
 

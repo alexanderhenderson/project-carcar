@@ -75,19 +75,50 @@ class ScheduledAppointmentsListPage extends React.Component{
 
   async handleCompletedClick(event) {
     console.log("completed clicked")
+
+    //get the href from the event target (delete button)
+    const appointmentHref = event.target.value;
+    console.log("Complete button ", appointmentHref, " clicked")
+
+    //set base URL and add the shoe ID so delete request is correct
+    const baseUrl = 'http://localhost:8080';
+    const putUrl = baseUrl + appointmentHref
+    console.log('url for put request: ', putUrl)
+
+    // only fetch parameters needed = method
+    const fetchParameters = {
+      method: 'put',
+    };
+
+    // send the request, then convert and hold the response
+    const response = await fetch(putUrl, fetchParameters)
+    let answer = await response.json();    
+    // log the response to the console
+    // console.log(answer)
+
+    // if response is ok, log success message and delete
+    // parts from state
+    if (response.ok){
+        console.log("great success");
+
+        window.location.reload(false);
+      }
+
+
+
   }
 
 
   // this event will delete the selected appointment  
   async handleDeleteClick(event) {
         
-    //get the shoe ID from the event target (href from delete button)
-    const shoeID = event.target.value;
+    //get the href from the event target (delete button)
+    const appointmentHref = event.target.value;
     //console.log("Delete button ", shoeID, " clicked")
 
     //set base URL and add the shoe ID so delete request is correct
     const baseURL = 'http://localhost:8080';
-    const deleteURL = baseURL + shoeID
+    const deleteURL = baseURL + appointmentHref
     //console.log('url for delete request: ', deleteURL)
 
     // only fetch parameters needed = method
@@ -125,7 +156,7 @@ class ScheduledAppointmentsListPage extends React.Component{
               <th scope="col">Vehicle Vin</th>
               <th scope="col">Special Rate</th>
               <th scope="col">Reason for Appointment</th>
-              <th scope="col"></th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -141,7 +172,7 @@ class ScheduledAppointmentsListPage extends React.Component{
                 <td>{appointment.fromInventory}</td>
                 <td>{appointment.reason_for_appointment}</td>
                 <td> 
-                <button type="button" onClick={this.handleDeleteClick} value={appointment.href} className="btn btn-danger">Cancel Service</button>
+                <button type="button" onClick={this.handleDeleteClick} value={appointment.href} className="btn btn-danger btn-sm">Cancel Service</button>
                 <button type="button" onClick={this.handleCompletedClick} value={appointment.href} className="btn btn-success">Service Completed</button>
                 </td>
               </tr>

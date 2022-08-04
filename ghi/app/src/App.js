@@ -10,6 +10,7 @@ import AddCarToInventory from './AddCarToInventoryPage'
 import CreateTechnicianPage from './CreateTechnicianPage';
 import CreateAppointmentPage from './CreateAppointmentPage';
 import ScheduledAppointmentsListPage from './ScheduledAppointmentsListPage';
+import AppointmentHistroyPage from './AppointmentHistoryPage';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/addTechnician" element={<CreateTechnicianPage />} />
           <Route path="/createAppointment" element={<CreateAppointmentPage />} />
           <Route path="/scheduledAppointments" element={<ScheduledAppointmentsListPage />} />
+          <Route path="/serviceHistory" element={<AppointmentHistroyPage />} />
         </Routes>
       </div>
     </BrowserRouter>
