@@ -1,17 +1,23 @@
 from django.db import models
+from django.urls import reverse
 
 
 class ManufacturerVO(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
+    def __str__(self):
+            return self.name
 
 
 class AutomobileVO(models.Model):
     vin = models.CharField(max_length=17, unique=True)
 
+    def __str__(self):
+        return str(self.vin)
 
 
-class PotentialCustomer(models.Model):
+
+class Customer(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=200)
     phone = models.CharField(max_length = 25)
@@ -19,16 +25,23 @@ class PotentialCustomer(models.Model):
     def __str__(self):
         return self.name
 
+    def get_api_url(self):
+        # return for encoder HREF call - reverse gives us the URL
+        return reverse('api_show_customer', kwargs={"pk": self.id})
+
 
 class SalesPerson(models.Model):
     name = models.CharField(max_length=50)
-    employeenumber = models.IntegerField(max_length=10)
+    employeenumber = models.IntegerField(unique=True)
 
     def __str__(self):
-        return self.name
+        return f'{self.name} {str(self.id)}'
+
+    def get_api_url(self):
+        
+        return reverse('api_show_salesperson', kwargs={"pk": self.id})
 
 class Sale(models.Model):
-    price = models.IntegerField(max_length=50)
 
     salesperson = models.ForeignKey(
         SalesPerson,
@@ -36,11 +49,27 @@ class Sale(models.Model):
         on_delete=models.PROTECT,
     )
 
-    automobile = models.
+    automobile = models.ForeignKey(
+        AutomobileVO,
+        related_name="automobile",
+        on_delete=models.PROTECT,
+    )
 
+    customer = models.ForeignKey(
+        Customer,
+        related_name="customer",
+        on_delete=models.PROTECT,
+    )
 
+    price = models.IntegerField()
+    
+    def __str__(self):
+        return f'{self.salesperson} {self.automobile} {self.customer} {self.price}'
+    
+    def get_api_url(self):
+        return reverse("api_show_sale", kwargs={"pk": self.id})
 
-class SalesPersonSaleHistory(models.Model):
+    
 
 
 
