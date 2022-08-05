@@ -9,7 +9,7 @@ Team:
 
     Nothing too special to run the project.
 
-    Clone the gitlab repository, and then checkout the branch named "the-main"
+    Clone the gitlab repository, and then checkout the branch named "main-branch"
         ("main" branch we forked was protected so we could not change or delete it)
 
     Run the following docker commands in the cloned directory *after* changing branches:
