@@ -12,7 +12,7 @@ function Nav() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <NavLink className="nav-link" aria-current="page" to="/automobiles">
-                Automobiles
+                Automobiles in Inventory
               </NavLink>
               <NavLink className="nav-link" aria-current="page" to="/models/new">
                 Create a vehicle model
@@ -26,8 +26,8 @@ function Nav() {
               <NavLink className="nav-link" aria-current="page" to="/createManufacturer">
                 Create Manufacturer
               </NavLink>
-              <NavLink className="nav-link" aria-current="page" to="/addCar">
-                Add Car to Inventory
+              <NavLink className="nav-link" aria-current="page" to="/addAutomobile">
+                Add Automobile to Inventory
               </NavLink>
               <NavLink className="nav-link" aria-current="page" to="/addTechnician">
                 Add Technician

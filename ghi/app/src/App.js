@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CreateModel from './CreateModel';
-import ListAutomobiles from './ListAutomobiles';
+import ListAutomobiles from './ListAutomobilesInInventory';
 import ListModels from './ListModels';
 import MainPage from './MainPage';
 import Nav from './Nav';
 import ManufacturerListPage from './ManufacturerListPage';
 import CreateManufacturerPage from './CreateManufacturerPage'
-import AddCarToInventory from './AddCarToInventoryPage'
+import AddAutomobileToInventory from './AddAutomobileToInventoryPage'
 import CreateTechnicianPage from './CreateTechnicianPage';
 import CreateAppointmentPage from './CreateAppointmentPage';
 import ScheduledAppointmentsListPage from './ScheduledAppointmentsListPage';
@@ -25,7 +25,7 @@ function App() {
           <Route path="/automobiles" element={<ListAutomobiles />} />
           <Route path="/models/new" element={<CreateModel />} />
           <Route path="/models" element={<ListModels />} />
-          <Route path="/addCar" element={<AddCarToInventory />} />
+          <Route path="/addAutomobile" element={<AddAutomobileToInventory />} />
           <Route path="/addTechnician" element={<CreateTechnicianPage />} />
           <Route path="/createAppointment" element={<CreateAppointmentPage />} />
           <Route path="/scheduledAppointments" element={<ScheduledAppointmentsListPage />} />

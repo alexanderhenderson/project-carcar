@@ -18,6 +18,7 @@ class Technician(models.Model):
 
 
 
+
 class Appointment(models.Model):
     vin = models.CharField(max_length=100)
     owner_name = models.CharField(max_length=200)

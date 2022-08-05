@@ -20,30 +20,32 @@ class ListAutomobiles extends React.Component {
   render() {
 
     return (
-    
-    <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Color</th>
-            <th>Year</th>
-            <th>VIN</th>
-            <th>Model</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.state.autos.map(automobile => {
-            console.log(automobile);
-            return (
-              <tr key={automobile.id}>
-                <td>{ automobile.color }</td>
-                <td>{ automobile.year }</td>
-                <td>{ automobile.vin }</td>
-                <td>{automobile.model.name}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+    <div>
+      <h1> Automobiles in Inventory </h1>
+      <table className="table table-striped" title="Automobiles in Inventory">
+          <thead>
+            <tr>
+              <th>Color</th>
+              <th>Year</th>
+              <th>VIN</th>
+              <th>Model</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.autos.map(automobile => {
+              console.log(automobile);
+              return (
+                <tr key={automobile.id}>
+                  <td>{ automobile.color }</td>
+                  <td>{ automobile.year }</td>
+                  <td>{ automobile.vin }</td>
+                  <td>{automobile.model.name}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     )
 }
 }

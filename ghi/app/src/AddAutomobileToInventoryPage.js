@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AddCarToInventory extends React.Component{
+class AddAutomobileToInventory extends React.Component{
 
   constructor(props){
     // initilizing super class
@@ -111,7 +111,7 @@ class AddCarToInventory extends React.Component{
           <div className="column">
           <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
-              <h1>Add car to inventory</h1>
+              <h1>Add Automobile to inventory</h1>
               <form onSubmit={this.handleSubmit}>
               <div className="mb-3">
               <div className="form-floating mb-3">
@@ -147,4 +147,4 @@ class AddCarToInventory extends React.Component{
 };
     
 
-export default AddCarToInventory;
+export default AddAutomobileToInventory;
