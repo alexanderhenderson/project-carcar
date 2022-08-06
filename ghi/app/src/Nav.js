@@ -11,24 +11,28 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" to="/automobiles">
-                Automobiles
-              </NavLink>
+            <h3 className="text-white"> Inventory:</h3>
               <NavLink className="nav-link" aria-current="page" to="/models/new">
-                Create a vehicle model
+                Create a Automobile Model
               </NavLink>
               <NavLink className="nav-link" aria-current="page" to="/models">
-                Models
-              </NavLink>
-              <NavLink className="nav-link" aria-current="page" to="/manufacturers">
-                List of Manufacturers
+                List of Automobile Models
               </NavLink>
               <NavLink className="nav-link" aria-current="page" to="/createManufacturer">
                 Create Manufacturer
               </NavLink>
-              <NavLink className="nav-link" aria-current="page" to="/addCar">
-                Add Car to Inventory
+              <NavLink className="nav-link" aria-current="page" to="/manufacturers">
+                List of Manufacturers
               </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/addAutomobile">
+                Add Automobile to Inventory
+              </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/automobiles">
+                Automobiles in Inventory
+              </NavLink>
+              </li>
+              <li className="nav-item">
+              <h3 className="text-white"> Sales:</h3>
               <NavLink className="nav-link" aria-current="page" to="/customers">
                 Create a potential customer
               </NavLink>
@@ -44,11 +48,20 @@ function Nav() {
               <NavLink className="nav-link" aria-current="page" to="/salesrephistory">
                 List Sales Rep History
               </NavLink>
+              </li>
+              <li className="nav-item">
+              <h3 className="text-white"> Service:</h3>
               <NavLink className="nav-link" aria-current="page" to="/addTechnician">
                 Add Technician
               </NavLink>
               <NavLink className="nav-link" aria-current="page" to="/createAppointment">
                 Create Appointment
+              </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/scheduledAppointments">
+                Scheduled Appointments
+              </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/serviceHistory">
+                Service History
               </NavLink>
             </li>
           </ul>

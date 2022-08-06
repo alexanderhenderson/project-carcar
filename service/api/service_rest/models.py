@@ -18,6 +18,7 @@ class Technician(models.Model):
 
 
 
+
 class Appointment(models.Model):
     vin = models.CharField(max_length=100)
     owner_name = models.CharField(max_length=200)
@@ -25,9 +26,13 @@ class Appointment(models.Model):
     time = models.TimeField()
     assigned_tech = models.ForeignKey(Technician, on_delete=models.PROTECT)
     reason_for_appointment = models.TextField(max_length=10000)
+    completed = models.BooleanField(max_length=30, default=False)
 
     def get_api_url(self):
         return reverse("api_show_appointment", kwargs={"pk": self.id})
+    
+    def __str__(self):
+        return f'{self.owner_name} appointment on {self.date} with {self.assigned_tech.name} for vehicle with vin:{self.vin}'
 
  # not 100% certin this will work as a foreingkey since we are polling
  # but I am certain it to start with.

@@ -36,7 +36,7 @@ class CreateAppointmentPage extends React.Component{
 
         if (response.ok){
           const data = await response.json();
-          console.log("API Response received, data: ", data);
+          //console.log("API Response received, data: ", data);
             this.setState({technicians: data.technicians});
         
         } else {
@@ -83,17 +83,22 @@ class CreateAppointmentPage extends React.Component{
 
         const data = {...this.state};
 
-        data.style_name = data.styleName;
-        data.picture_url = data.pictureURL;
-
-        delete data.styleName;
-        delete data.pictureURL;
-        delete data.locations;
-
+        
+        data.owner_name = data.ownerName;
+        data.assigned_tech = data.technician;
+        data.reason_for_appointment = data.reason
+        
+        delete data.reason;
+        delete data.ownerName;
+        delete data.technician;
+        delete data.technicians;
+        
         //console.log("JSON Corrected data: ", data);
         const jsonData = JSON.stringify(data);
+        //console.log("JSON Corrected data: ", jsonData);
 
-        const getResponseURL = 'http://localhost:8090/api/hats/';
+
+        const getResponseURL = 'http://localhost:8080/api/appointments/';
         const fetchParameters = {
             method: 'post',
             body: jsonData,
@@ -102,13 +107,23 @@ class CreateAppointmentPage extends React.Component{
             },
         };
 
-        // const response = await fetch(getResponseURL, fetchParameters)
+        const response = await fetch(getResponseURL, fetchParameters)
 
-        // if (response.ok){
-        //     let newHat = await response.json();
-        //     newHat = JSON.stringify(newHat);
-        //     console.log(newHat);
-        // }
+        if (response.ok){
+            let newAppointment = await response.json();
+            newAppointment = JSON.stringify(newAppointment);
+            //console.log(newAppointment);
+
+            // clear form
+            this.setState({
+            vin: "",
+			      ownerName: "",
+			      date: "",
+			      time: "",
+            reason: "",
+            technician: "",
+            });
+        }
 
     }
 
@@ -142,7 +157,7 @@ class CreateAppointmentPage extends React.Component{
                   </div>
                   <div className="mb-3">
                     <select onChange={this.handleTechnicianChange} required name="locations" id='locations' className='form-select'>
-                    <option value="">Technician</option>
+                    <option value="">Select a Technician</option>
                       {this.state.technicians.map(technician => {
                        return (
                         <option key={technician.href} value={technician.id}>
