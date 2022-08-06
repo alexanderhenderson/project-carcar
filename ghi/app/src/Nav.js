@@ -24,6 +24,7 @@ function Nav() {
               <NavLink className="nav-link" aria-current="page" to="/manufacturers">
                 List of Manufacturers
               </NavLink>
+<<<<<<< HEAD
               <NavLink className="nav-link" aria-current="page" to="/addAutomobile">
                 Add Automobile to Inventory
               </NavLink>
@@ -33,6 +34,20 @@ function Nav() {
               </li>
               <li className="nav-item">
               <h3 className="text-white"> Service:</h3>
+=======
+              <NavLink className="nav-link" aria-current="page" to="/customers">
+                Create a potential customer
+              </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/salespersons">
+                Create a Sales Person
+              </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/salesrecord/new">
+                Create a Sales Record
+              </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/sales">
+                List Sales
+              </NavLink>
+>>>>>>> main-branch
               <NavLink className="nav-link" aria-current="page" to="/addTechnician">
                 Add Technician
               </NavLink>
