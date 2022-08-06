@@ -30,22 +30,32 @@ class Customer(models.Model):
         return reverse('api_show_customer', kwargs={"pk": self.id})
 
 
-class SalesPerson(models.Model):
-    name = models.CharField(max_length=50)
+class SalesRep(models.Model):
+    name = models.CharField(max_length=100)
     employeenumber = models.IntegerField(unique=True)
 
-    def __str__(self):
-        return f'{self.name} {str(self.id)}'
-
     def get_api_url(self):
+        return reverse("api_salesrep", kwargs={"pk": self.id})
+
+    def __str__(self):
+        return self.name
+
+# class SalesPerson(models.Model):
+#     name = models.CharField(max_length=50)
+#     employeenumber = models.IntegerField(unique=True)
+
+#     def __str__(self):
+#         return f'{self.name} {str(self.id)}'
+
+#     def get_api_url(self):
         
-        return reverse('api_show_salesperson', kwargs={"pk": self.id})
+#         return reverse('api_show_salesperson', kwargs={"pk": self.id})
 
 class Sale(models.Model):
 
-    salesperson = models.ForeignKey(
-        SalesPerson,
-        related_name="salesperson",
+    salesrep = models.ForeignKey(
+        SalesRep,
+        related_name="salesrep",
         on_delete=models.PROTECT,
     )
 
@@ -64,7 +74,7 @@ class Sale(models.Model):
     price = models.IntegerField()
     
     def __str__(self):
-        return f'{self.salesperson} {self.automobile} {self.customer} {self.price}'
+        return f'{self.salesrep} {self.automobile} {self.customer} {self.price}'
     
     def get_api_url(self):
         return reverse("api_show_sale", kwargs={"pk": self.id})
