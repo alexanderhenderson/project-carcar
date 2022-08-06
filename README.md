@@ -16,6 +16,8 @@ Team:
         "docker-compose build"
         "docker-compose up"
 
+    ***testing for Record a new sale must be done with the CR-V automobile.***
+
     
 
 ## Design
