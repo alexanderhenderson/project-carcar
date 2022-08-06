@@ -16,6 +16,8 @@ Team:
         "docker-compose build"
         "docker-compose up"
 
+    Migrate both of the django microservices in their respective docker containers after running the bash command
+
     ***testing for Record a new sale must be done with the CR-V automobile.***
 
     
