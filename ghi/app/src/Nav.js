@@ -32,14 +32,17 @@ function Nav() {
               <NavLink className="nav-link" aria-current="page" to="/customers">
                 Create a potential customer
               </NavLink>
-              <NavLink className="nav-link" aria-current="page" to="/salespersons">
-                Create a Sales Person
+              <NavLink className="nav-link" aria-current="page" to="/salesrep">
+                Create a Sales Rep
               </NavLink>
-              <NavLink className="nav-link" aria-current="page" to="/salesrecord/new">
+              <NavLink className="nav-link" aria-current="page" to="/salesrecord">
                 Create a Sales Record
               </NavLink>
               <NavLink className="nav-link" aria-current="page" to="/sales">
                 List Sales
+              </NavLink>
+              <NavLink className="nav-link" aria-current="page" to="/salesrephistory">
+                List Sales Rep History
               </NavLink>
               <NavLink className="nav-link" aria-current="page" to="/addTechnician">
                 Add Technician

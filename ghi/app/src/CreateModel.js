@@ -110,7 +110,7 @@ class CreateModel extends React.Component {
                         <label htmlFor="name">Name</label>
                     </div>
                   <div className="form-floating mb-3">
-                    <input onChange={this.handlePictureUrlChange} value={this.state.pictureUrl} placeholder="Picture URL" required type="url" name ="pictureUrl" id="pictureUrl" className="form-control"/>
+                    <input onChange={this.handlePictureUrlChange} value={this.state.pictureUrl} placeholder="Picture URL" required type="text" name ="pictureUrl" id="pictureUrl" className="form-control"/>
                     <label htmlFor="pictureUrl">Picture URL</label>
                   </div>
                   <div className="mb-3">

@@ -8,9 +8,10 @@ import ManufacturerListPage from './ManufacturerListPage';
 import CreateManufacturerPage from './CreateManufacturerPage'
 import AddCarToInventory from './AddCarToInventoryPage'
 import CreateCustomers from './CreateCustomer';
-import CreateSalesPersons from './CreateSalesPerson';
+import CreateSalesRep from './CreateSalesRep';
 import CreateSalesRecord from './CreateSalesRecord';
 import ListSales from './ListSales';
+import ListSalesRepHistory from './ListSalesRepHistory';
 import CreateTechnicianPage from './CreateTechnicianPage';
 import CreateAppointmentPage from './CreateAppointmentPage';
 
@@ -29,9 +30,10 @@ function App() {
           <Route path="/models" element={<ListModels />} />
           <Route path="/addCar" element={<AddCarToInventory />} />
           <Route path="/customers" element={<CreateCustomers />} />
-          <Route path="/salespersons" element={<CreateSalesPersons />} />
-          <Route path="/salesrecord/new" element={<CreateSalesRecord />} />
-          <Route path="/sales" element={<ListSales />} />          
+          <Route path="/salesrep" element={<CreateSalesRep />} />
+          <Route path="/salesrecord" element={<CreateSalesRecord />} />
+          <Route path="/sales" element={<ListSales />} />
+          <Route path="/salesrephistory" element={<ListSalesRepHistory />} />
           <Route path="/addTechnician" element={<CreateTechnicianPage />} />
           <Route path="/createAppointment" element={<CreateAppointmentPage />} />
         </Routes>

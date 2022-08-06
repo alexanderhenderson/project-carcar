@@ -15,13 +15,14 @@ from sales_rest.models import ManufacturerVO, AutomobileVO
 # from sales_rest.models import Something
 
 
-# def get_autos():
-#     response = requests.get("http://localhost:8100/api/automobiles/")
-#     content = json.loads(response.content)
-#     for auto in content[autos]:
-#         AutomobileVO.objects.update_or_create(
-#             import_href=
-#         )
+def get_automobile():
+
+    response = requests.get("http://inventory-api:8000/api/automobiles/")
+    content = json.loads(response.content)
+    for auto in content["autos"]:
+        AutomobileVO.objects.update_or_create(
+            vin = auto['vin']
+        )
 
 
 def poll():

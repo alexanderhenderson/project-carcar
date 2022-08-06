@@ -19,7 +19,7 @@ class CreateCustomers extends React.Component {
         const data = {...this.state};
 
         // console.log(data);
-        let customerUrl = 'http://localhost:8090/api/customers/';
+        let postUrl = 'http://localhost:8090/api/customers/';
         let fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -27,11 +27,11 @@ class CreateCustomers extends React.Component {
                 'Content-Type': 'application/json',
             },
         };
-        let response = await fetch(customerUrl, fetchConfig);
+        let response = await fetch(postUrl, fetchConfig);
         if (response.ok) {
             // console.log("response is ok")
             const newCustomer = await response.json();
-            // console.log("NewHat", newHat);
+            console.log(data);
             const cleared = {
                 name: "",
                 address: "",
@@ -57,16 +57,8 @@ class CreateCustomers extends React.Component {
         this.setState({phone: value});
     }
 
-    async componentDidMount() {
-        const url = "http://localhost:8100/api/customers/";
-        const response = await fetch(url);
+
     
-        if (response.ok) {
-            const data = await response.json();
-            console.log(data);
-            this.setState({customers: data.customers});
-    }
-}
 
     render () {
         return (
