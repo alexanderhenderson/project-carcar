@@ -7,18 +7,17 @@ Team:
 
 ## How to load project:
 
-    Nothing too special to run the project.
+    Simple project to run, however you will need to be able to run docker commands.
 
-    Clone the gitlab repository, and then checkout the branch named "main-branch"
-        ("main" branch we forked was protected so it appeared that we could not change or delete it)
+    Clone the gitlab repository via command line, and checkout the branch named "main-branch"
+        ("main" branch is the Hack Reactor starting project, which only has a single
+        Django microservice.)
 
-    Run the following docker commands in the cloned directory *after* changing branches:
+    Run the following docker commands in the cloned directory *after* checking out main:
         "docker-compose build"
-        "docker-compose up"
+        "docker-compose up"        
 
-    Migrate both of the django microservices in their respective docker containers after running the bash command
-
-    ***testing for Record a new sale must be done with the CR-V automobile.***
+    ***for new testing for Record a new sale must be done with the CR-V automobile.***
 
     
 
@@ -61,39 +60,39 @@ the list shown below)
 
 ## Service microservice - Alexander Henderson
 
-    I started by creating the models I thought we would need to store all the information needed by the front end. There
-    were 3 - Technician, Appointment and AutomobilesVO to hold the data from the inventory model from the Inventory 
-    microservice. 
+I started by creating the models I thought we would need to store all the information needed by the front end. There
+were 3 - Technician, Appointment and AutomobilesVO to hold the data from the inventory model from the Inventory 
+microservice. 
 
-    Technician was self explanatory. It has a name and employee number field. 
+Technician was self explanatory. It has a name and employee number field. 
 
-    Appointment was also fairly simple - it has all the field required by the project (owner, data, time... etc) and a
-    single foreignkey to the technician (I decided to do models.PROTECT on deletion since we don't want to delete the tech 
-    if Appointment they are assigned to is deleted, and since being able to delete a tech was not a project requirment). The
-    only field I added after intially creating the model was a "copleted" field, which made it easier to filter completed/
-    incompleted appointments from the front page. 
+Appointment was also fairly simple - it has all the field required by the project (owner, data, time... etc) and a
+single foreignkey to the technician (I decided to do models.PROTECT on deletion since we don't want to delete the tech 
+if Appointment they are assigned to is deleted, and since being able to delete a tech was not a project requirment). The
+only field I added after intially creating the model was a "copleted" field, which made it easier to filter completed/
+incompleted appointments from the front page. 
 
-    Initially I made the AutomobilesVO will all of the fields from the model it was a virtual object copy of (Automobile in the
-    inventory api inventory_rest models), but eventually decided to only keep the vin field. One of our front end pages needs 
-    to show if someone who bought a car that was in our inventory so that we can give them a discount, and I figured we could 
-    do that by just comparing the vin of the car in the appointment to a list of vins that were at our inventory at some point 
-    (the vins in the AutomobilesVO model are never deleted, so even if Automobile model vins are deleted (like if a automobile 
-    is sold), the vins in the AutomobilesVO do not).
+Initially I made the AutomobilesVO will all of the fields from the model it was a virtual object copy of (Automobile in the
+inventory api inventory_rest models), but eventually decided to only keep the vin field. One of our front end pages needs 
+to show if someone who bought a car that was in our inventory so that we can give them a discount, and I figured we could 
+do that by just comparing the vin of the car in the appointment to a list of vins that were at our inventory at some point 
+(the vins in the AutomobilesVO model are never deleted, so even if Automobile model vins are deleted (like if a automobile 
+is sold), the vins in the AutomobilesVO do not).
 
-    The Views / API calls were fairly striaghtforward. I started by creating a JS/React page, and then would go into the 
-    microservice views to build whatever api calls the front end called for. Having the Excalidraw diagrams made this much
-    easier. Most of the api calls / json requests were fairly simple, a few required data modification/filtering or additional
-    work to add a referenced model instance.
+The Views / API calls were fairly striaghtforward. I started by creating a JS/React page, and then would go into the 
+microservice views to build whatever api calls the front end called for. Having the Excalidraw diagrams made this much
+easier. Most of the api calls / json requests were fairly simple, a few required data modification/filtering or additional
+work to add a referenced model instance.
 
-    The polling was fairly simple. It is still the same server connection we used in the practice project, and was very similar.
-    All it was polling for was the vin field from inventory.api.inventory_rest Automobile model. 
+The polling was fairly simple. It is still the same server connection we used in the practice project, and was very similar.
+All it was polling for was the vin field from inventory.api.inventory_rest Automobile model. 
 
-    The JS/React pages were fun to build but a bit challenging. 2 of the pages (Enter a service appointment and Create/Enter a Technician)
-    were very straightforward and similar to things we have made before. However, for the other two pages we had never filtered data from 
-    fetch requests before, so that was an interesting experience. One page requred us to filter for service appointments that had been
-    completed and matched a vin we searched (this was the Service History page) and the other was slightly simpler, showing a list of
-    all scheduled appointments that had not yet been completed (this page required us to be able to mark a appointment as completed or
-    delete it, but that was fairly simple compared to filtering the data from get requests to our microservice).
+The JS/React pages were fun to build but a bit challenging. 2 of the pages (Enter a service appointment and Create/Enter a Technician)
+were very straightforward and similar to things we have made before. However, for the other two pages we had never filtered data from 
+fetch requests before, so that was an interesting experience. One page requred us to filter for service appointments that had been
+completed and matched a vin we searched (this was the Service History page) and the other was slightly simpler, showing a list of
+all scheduled appointments that had not yet been completed (this page required us to be able to mark a appointment as completed or
+delete it, but that was fairly simple compared to filtering the data from get requests to our microservice).
 
 ## Sales microservice - Howard Yuan
 
